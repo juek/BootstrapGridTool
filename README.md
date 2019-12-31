@@ -11,7 +11,7 @@ See also [Typesetter Home](https://www.typesettercms.com), [Typesetter on GitHub
 
 ## Screenshot ##
 
-follows[Screenshot](screenshot-1.png?raw=true)
+![Screenshot](/screenshot-1.png?raw=true)
 
 ## Requirements
 * Typesetter CMS 5+
