@@ -18,7 +18,7 @@ See also [Typesetter Home](https://www.typesettercms.com), [Typesetter on GitHub
 
 ## Manual Installation
 1. Download the [master ZIP archive](https://github.com/juek/BootstrapGridTool/archive/master.zip)
-2. Upload the extracted folder 'BootstrapGridTool-master' to your server into the /themes directory
+2. Upload the extracted folder 'BootstrapGridTool-master' to your server into the /addons directory
 3. Install it using Typesetter's Admin Toolbox &rarr; Plugins &rarr; Manage &rarr; Available &rarr; Bootstrap Grid Tool
 
 ## License
