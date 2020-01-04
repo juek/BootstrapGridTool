@@ -124,6 +124,7 @@ $gp.bsgt.init = function(){
     $gp.bsgt.checkSectionStructure(e.target);
   });
 
+
   // bind create UI when Section Attributes dialog was loaded
   $(document).on('section_options:loaded', function(e){
     $gp.bsgt.debug && console.log('Section Attributes dialog loaded -> calling $gp.bsgt.create()');
@@ -200,7 +201,7 @@ $gp.bsgt.checkSectionStructure = function(target){
 
 $gp.bsgt.getClassesFromInput = function(){
   var classes_input = $('form#section_attributes_form input.attr_name[value="class"]')
-    .closest("tr").find("input.attr_value");
+    .closest('tr').find('.attr_value');
 
   var classes = classes_input.length ? $.trim(classes_input.val()) : false;
 
@@ -279,7 +280,7 @@ $gp.bsgt.updateClassesInput = function(){
   $gp.bsgt.checkClassesInputRow();
 
   var $classes_name_input  = $('form#section_attributes_form input.attr_name[value="class"]');
-  var $classes_value_input = $classes_name_input.closest("tr").find("input.attr_value");
+  var $classes_value_input = $classes_name_input.closest('tr').find('.attr_value');
   
   //$(['others', 'columns', 'offsets'], function(i, bewkpoints){});
   var class_names = [];
@@ -333,7 +334,6 @@ $gp.bsgt.breakpoint = function(){
   });
   return breakpoint;
 };
-
 
 
 // generate possible col classes
@@ -412,7 +412,6 @@ $gp.bsgt.create = function(){
   html += '</tr></thead>';
   html += '<tbody>';
   html += '<tr>';
-
   $.each($gp.bsgt.bootstrap.breakpoints, function(breakpoint, data){
     html += '<td class="bsgt-breakpoint-' + breakpoint + '" data-breakpoint="' + breakpoint + '">';
     html +=   '<div class="bsgt-widget">';
@@ -440,7 +439,6 @@ $gp.bsgt.create = function(){
     html +=   '</div>';
     html += '</td>';
   });
-
   html += '</tr>';
   html += '</tbody>';
   html += '</table>';
@@ -544,7 +542,7 @@ $gp.bsgt.setDefaultClasses = function(){
 
 
 /**
- * merges an optional passed map of classes into $gp.bsgt.current_classes
+ * merges an [optional] passed map of classes into $gp.bsgt.current_classes
  * cares for 'breakpoint upwards inheritance'
  * by removing redundancies
  */
@@ -720,6 +718,7 @@ $gp.bsgt.getContextClassName = function(type, breakpoint, size){
 
 
 
+
 $gp.bsgt.updateUI = function(){
 
   var column = { current : 12, breakpoint : 'xs' };
@@ -840,7 +839,7 @@ $gp.bsgt.checkClassesInputRow = function(rebind_events){
   var $classes_row = $('form#section_attributes_form input.attr_name[value="class"]').closest("tr");
 
   if( $classes_row.length == 1 ){
-    $gp.bsgt.ui.classes_input = $classes_row.find('input.attr_value');
+    $gp.bsgt.ui.classes_input = $classes_row.find('.attr_value');
     if( typeof(rebind_events) != 'unfedined' && rebind_events ){
       $gp.bsgt.ui.classes_input
         .off('change')
@@ -858,12 +857,13 @@ $gp.bsgt.checkClassesInputRow = function(rebind_events){
     var html =  '<tr><td class="bsgt-new-classes-row">';
     html    +=    '<input class="gpinput attr_name" value="class" size="8" />';
     html    +=  '</td><td>';
-    html    +=    '<input class="gpinput attr_value" value="" size="40" />';
+    // html    +=    '<input class="gpinput attr_value" value="" size="40" />';
+    html    +=    '<textarea rows="1" class="gptextarea attr_value"></textarea>';
     html    +=  '</td></tr>';
     var $new_classes_row = $(html);
     $new_classes_row.appendTo('form#section_attributes_form tbody');
 
-    $gp.bsgt.ui.classes_input = $new_classes_row.find('input.attr_value');
+    $gp.bsgt.ui.classes_input = $new_classes_row.find('.attr_value');
     $gp.bsgt.ui.classes_input
       .on('change', function(){
         $gp.bsgt.getClassesFromInput();
@@ -881,10 +881,10 @@ $gp.bsgt.checkClassesInputRow = function(rebind_events){
 
     var merged_classes = '';
     $classes_row.each(function(){
-      merged_classes += $(this).find('input.attr_value').val();
+      merged_classes += $(this).find('.attr_value').val();
     });
     $classes_row.not(":eq(0)").remove();
-    $gp.bsgt.ui.classes_input = $classes_row.find('input.attr_value');
+    $gp.bsgt.ui.classes_input = $classes_row.find('.attr_value');
     $gp.bsgt.ui.classes_input
       .off('change')
       .on('change', function(){
