@@ -76,7 +76,7 @@
 #bootstrap_grid_tool > table tbody td {
   background: #f8f8f8;
   position: relative;
-  padding: 12px 16px;
+  padding: 12px 16px !important;
 }
 
 #bootstrap_grid_tool > table tbody {
